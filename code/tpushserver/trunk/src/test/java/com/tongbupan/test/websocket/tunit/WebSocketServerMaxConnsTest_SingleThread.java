@@ -210,6 +210,8 @@ public class WebSocketServerMaxConnsTest_SingleThread {
 		// 1.init websocket client factory
 		WebSocketClientFactory factory = new WebSocketClientFactory();
 		factory.setBufferSize(WEBSOCKET_CLIENT_FACTORY_BUFFSIZE);
+		factory.getSslContextFactory().setTrustAll(true);
+		factory.getSslContextFactory().addExcludeProtocols("SSLv2Hello","SSLv3");
 		try {
 			factory.start();
 		} catch (Exception e) {
